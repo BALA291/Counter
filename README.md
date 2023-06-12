@@ -41,14 +41,45 @@ A Synchronous counter is the counter in which the clock input with all the flip-
 
 
 ## Program:
-
+```
+1.
+module exp6(clk,q1,q2,q3,q4);
+input clk;
+output reg q1,q2,q3,q4;
+always@(posedge clk)
+begin
+  q4=(q1&q2&q3)^q4;
+  q3=(q1&q2)^q3;
+  q2=q1^q2;
+  q1=1^q1;
+end
+endmodule
+```
+```
+2.
+module exp6b(clk,q1,q2,q3,q4);
+input clk;
+output reg q1,q2,q3,q4;
+always @(posedge clk)
+begin
+q4=((~q3)&(~q2)&(~q1))^q4;
+q3=((~q2)&(~q1))^q3;
+q2=(~q1)^q2;
+q1=1^q1;
+end
+endmodule
+```
 
 ## RTL Schematic:
 
-
+![counter1](https://github.com/BALA291/Counter/assets/120717501/314b0a34-5fdf-4110-b43b-b893d98c8c75)
+![counter2](https://github.com/BALA291/Counter/assets/120717501/3c10dccd-d185-49ec-baa5-35de22a97383)
 
 
 ## Timing Diagram:
+
+![coun1t](https://github.com/BALA291/Counter/assets/120717501/e5cb0a8e-bad5-475e-878d-ba37ae60fc6f)
+![coun2t](https://github.com/BALA291/Counter/assets/120717501/e3385359-f7b0-486f-b643-20eec9020196)
 
 
 
